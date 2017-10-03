@@ -55,8 +55,8 @@ ALTER TABLE consensus_motif ADD CONSTRAINT consensus_motif_pk PRIMARY KEY ( moti
 CREATE TABLE denovo_motif (
     sequence_id                INTEGER NOT NULL,
     consensus_equence          VARCHAR(70),
-    experiment_experiment_id   INTEGER NOT NULL,
-    know_motif_finding         VARCHAR(300)
+    know_motif_finding         VARCHAR(300),
+    experiment_experiment_id   INTEGER NOT NULL
 )
 ;
 
@@ -84,10 +84,10 @@ CREATE TABLE experiment (
     p_peaks_filt_by_local_signal              INTEGER,
     p_peaks_filt_too_clonal                   INTEGER,
     peaks_after_filtering                     INTEGER,
+    exp_type                                  VARCHAR(10),
     genome_genome_id                          INTEGER NOT NULL,
     cell_lines_cellline_id                    INTEGER NOT NULL,
-    antibody_antibody_id                      INTEGER NOT NULL,
-    exp_type                                  VARCHAR(10)
+    antibody_antibody_id                      INTEGER NOT NULL
 )
 ;
 
