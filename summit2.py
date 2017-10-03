@@ -11,7 +11,7 @@ def selectpeak(array, lowindex, hiindex, expid, testpos, fields):
 		i = lowindex
 		while testpos > array[i][1] and i < len(array)-1:
 			if testpos > array[i][1] and testpos < array[i][2] and expid == array[i][3]:
-				print(fields[0], fields[1], fields[2], fields[3], fields[4], array[i][0], expid, sep = "\t")
+				print(fields[0], fields[1], fields[2], fields[3], fields[4], array[i][0], sep = "\t")
 			i += 1
 		return
 
