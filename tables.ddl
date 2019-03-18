@@ -194,3 +194,27 @@ ALTER TABLE summit
 ALTER TABLE summit
     ADD CONSTRAINT summit_peak_fk FOREIGN KEY ( peak_peak_id )
         REFERENCES peak ( peak_id );
+
+CREATE TABLE dbsnp (
+  dbsnp_id VARCHAR(20) NOT NULL PRIMARY KEY,
+  chr      VARCHAR(2),
+  start    INT(11),
+  ref      VARCHAR(300),
+  alt      VARCHAR(1000)
+);
+
+CREATE TABLE reference (
+  chr   VARCHAR(2),
+  start INT(11),
+  end   INT(11),
+  seq   CHAR(200)
+);
+
+CREATE TABLE pfm (
+    consensus_motif_motif_id int(11),
+    position tinyint,
+    probA double,
+    probC double,
+    probG double,
+    probT double
+);
