@@ -13,7 +13,6 @@ for name in sys.argv[2:]:
 	b = os.path.basename(name)
 	motif = b.split("_")[0]
 	f = open(name)
-	f.readline()
 	for i in f:
 		fields = i.rstrip().split("\t")
 		chrx   = fields[0].replace('chr', '')
