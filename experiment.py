@@ -20,13 +20,8 @@ for i in open(sys.argv[3]):
 	fields = i.rstrip().split("\t")
 	genome[fields[1]] = fields[0]
 
-factor = dict()
-for i in open(sys.argv[4]):
-	fields = i.rstrip().split("\t")
-	factor[fields[0]] = fields[6]
-
 count = 1
-for name in sys.argv[5:]:
+for name in sys.argv[4:]:
 	f = open(name)
 	f.readline()
 	for i in f:
@@ -70,13 +65,12 @@ for name in sys.argv[5:]:
 			putative_peaks_filtered_by_local_signal = int(fields[19])
 			putative_peaks_filtered_too_clonal      = int(fields[20])
 			peaks_after_filtering                   = int(fields[22])
-			antibody_field                          = fields[24].split("|")
+			antibody_field                          = fields[24]
 
-		for j in antibody_field:
-			if j.upper() in factor:
-				break
+		if antibody_field == "cofactor":
+			exp_type = "cofactor"
 		else:
-			print("No match:", fields[24])
+			exp_type = "factor"
 
 		Genome_genome_id                        = genome[name[:2]]
 		nf = name.split("_")
@@ -86,7 +80,7 @@ for name in sys.argv[5:]:
 		else:
 			Antibody_antibody_id            = antibody[nf[4]]
 
-		#print(count, name, SRA_URL, is_it_paired_end, sra_record_url, unique_pos, total_tags, fragment_estimate, peak_size_estimate, tags_per_BP, avg_tags_per_pos, avg_tag_length, avg_frag_GC, total_peaks, peak_size, total_tags_in_peaks, expected_tags_per_peak, putative_peaks, putative_peaks_filtered_by_local_signal, putative_peaks_filtered_too_clonal, peaks_after_filtering, exp_type, Genome_genome_id, Cell_lines_celline_id, Antibody_antibody_id, sep = "\t")
+		print(count, name, SRA_URL, is_it_paired_end, sra_record_url, unique_pos, total_tags, fragment_estimate, peak_size_estimate, tags_per_BP, avg_tags_per_pos, avg_tag_length, avg_frag_GC, total_peaks, peak_size, total_tags_in_peaks, expected_tags_per_peak, putative_peaks, putative_peaks_filtered_by_local_signal, putative_peaks_filtered_too_clonal, peaks_after_filtering, exp_type, Genome_genome_id, Cell_lines_celline_id, Antibody_antibody_id, sep = "\t")
 
 		count += 1
 	f.close()

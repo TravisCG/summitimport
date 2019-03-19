@@ -10,11 +10,12 @@ for i in open(sys.argv[1]):
 
 count = 1
 for name in sys.argv[2:]:
-	if name == "../../motif_vs_summit_distances/factor/ZNF740_datatable.tbl":
+	if name == "../../motif_vs_summit_distances/ZNF740_datatable.tbl":
 		continue
 	b = os.path.basename(name)
 	motif = b.split("_")[0]
 	f = open(name)
+	f.readline()
 	for i in f:
 		fields = i.rstrip().split("\t")
 		chrx   = fields[0].replace('chr', '')
