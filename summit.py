@@ -18,8 +18,6 @@ for i in open(sys.argv[2]):
 	motifpos[key] = fields[0]
 
 for name in sys.argv[3:]:
-	if name == "../../motif_vs_summit_distances/factor/ZNF740_datatable.tbl":
-		continue
 	b = os.path.basename(name)
 	motif = b.split("_")[0]
 	if motif not in consensus:
