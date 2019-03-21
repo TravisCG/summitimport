@@ -74,6 +74,9 @@ for name in sys.argv[4:]:
 
 		Genome_genome_id                        = genome[name[:2]]
 		nf = name.split("_")
+		nf[2] = nf[2].upper()
+		if nf[2] == "CELLLINE":
+			nf[2] = "UNKNOWN"
 		Cell_lines_celline_id                   = celline[nf[2]]
 		if nf[4] not in antibody:
 			Antibody_antibody_id            = "0"

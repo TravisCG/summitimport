@@ -15,7 +15,9 @@ for fn in sys.argv[1:]:
 		expname = i.rstrip().split()[0]
 		fields  = expname.split("_")
 		cl      = fields[2]
-		cellline.add(cl)
+		if cl.upper() == "CELLLINE":
+			cl = 'UNKNOWN'
+		cellline.add(cl.upper())
 
 	f.close()
 
