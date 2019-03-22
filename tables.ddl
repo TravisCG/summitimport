@@ -13,7 +13,13 @@ ALTER TABLE anti2cons ADD CONSTRAINT anti2cons_pk PRIMARY KEY ( antibody_antibod
 
 CREATE TABLE antibody (
     antibody_id   INTEGER NOT NULL,
-    name          VARCHAR(70)
+    name          VARCHAR(70),
+    r_shape       INTEGER,
+    colour_hex    VARCHAR(7),
+    colour_r      INTEEGR,
+    colour_g      INTEGER,
+    colour_b      INTEGER,
+    is_it_cofactor VARCHAR(8)
 )
 ;
 
