@@ -5,17 +5,23 @@
 
 import sys
 
-antibody = set()
+antibody = dict()
 
-for fn in sys.argv[1:]:
-	f = open(fn)
-	f.readline() # header
-	for i in f:
-		a = i.rstrip().split()[0].split("_")[4]
-		antibody.add(a)
-	f.close()
+f = open(sys.argv[1])
+f.readline() # header
+for i in f:
+	a = i.rstrip().split()[0].split("_")[4]
+	antibody[a] = list()
+f.close()
 
+f = open(sys.argv[2])
+f.readline()
+for i in f:
+	fields = i.rstrip().split("\t")
+	if fields[0] not in antibody:
+		continue
+	antibody[fields[0]] = fields
 count = 1
 for a in antibody:
-	print(count, a, sep = "\t")
+	print(count, "\t".join(antibody[a]), sep = "\t")
 	count += 1
