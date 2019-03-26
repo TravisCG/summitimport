@@ -9,21 +9,21 @@ CREATE TABLE anti2cons (
     antibody_antibody_id       INTEGER NOT NULL,
     consensus_motif_motif_id   INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 ALTER TABLE anti2cons ADD CONSTRAINT anti2cons_pk PRIMARY KEY ( antibody_antibody_id,consensus_motif_motif_id );
 
 CREATE TABLE antibody (
     antibody_id      INTEGER NOT NULL,
-    name             VARCHAR2(70),
+    name             VARCHAR(70),
     r_shape          INTEGER,
-    colour_hex       VARCHAR2(10),
+    colour_hex       VARCHAR(10),
     colour_r         INTEGER,
     colour_g         INTEGER,
     colour_b         INTEGER,
-    is_it_cofactor   VARCHAR2(10)
+    is_it_cofactor   VARCHAR(10)
 )
-    LOGGING;
+    ;
 
 ALTER TABLE antibody ADD CONSTRAINT antibody_pk PRIMARY KEY ( antibody_id );
 
@@ -35,59 +35,59 @@ CREATE TABLE average_deviation (
     std_dev                    FLOAT,
     experiment_experiment_id   INTEGER NOT NULL,
     consensus_motif_motif_id   INTEGER NOT NULL,
-    average_deviation_name     CLOB
+    average_deviation_name     TEXT
 )
-    LOGGING;
+    ;
 
 ALTER TABLE average_deviation ADD CONSTRAINT average_deviation_pk PRIMARY KEY ( deviation_id );
 
 CREATE TABLE cell_lines (
     cellline_id   INTEGER NOT NULL,
-    name          VARCHAR2(70)
+    name          VARCHAR(70)
 )
-    LOGGING;
+    ;
 
 ALTER TABLE cell_lines ADD CONSTRAINT cell_lines_pk PRIMARY KEY ( cellline_id );
 
 CREATE TABLE consensus_motif (
     motif_id      INTEGER NOT NULL,
-    name          VARCHAR2(70),
-    jaspar_code   VARCHAR2(70),
-    motif_url     VARCHAR2(300),
+    name          VARCHAR(70),
+    jaspar_code   VARCHAR(70),
+    motif_url     VARCHAR(300),
     length        INTEGER,
-    logo          VARCHAR2(300)
+    logo          VARCHAR(300)
 )
-    LOGGING;
+    ;
 
 ALTER TABLE consensus_motif ADD CONSTRAINT consensus_motif_pk PRIMARY KEY ( motif_id );
 
 CREATE TABLE dbsnp (
-    dbsnp_id   VARCHAR2(20) NOT NULL,
-    chr        VARCHAR2(2),
-    "start"    INTEGER,
-    REF        VARCHAR2(300),
-    alt        VARCHAR2(1000)
+    dbsnp_id   VARCHAR(20) NOT NULL,
+    chr        VARCHAR(2),
+    start      INTEGER,
+    ref        VARCHAR(300),
+    alt        VARCHAR(1000)
 )
-    LOGGING;
+    ;
 
 ALTER TABLE dbsnp ADD CONSTRAINT dbsnp_pk PRIMARY KEY ( dbsnp_id );
 
 CREATE TABLE denovo_motif (
     sequence_id                INTEGER NOT NULL,
-    consensus_equence          VARCHAR2(70),
+    consensus_equence          VARCHAR(70),
     experiment_experiment_id   INTEGER NOT NULL,
-    know_motif_finding         VARCHAR2(300)
+    know_motif_finding         VARCHAR(300)
 )
-    LOGGING;
+    ;
 
 ALTER TABLE denovo_motif ADD CONSTRAINT denovo_motif_pk PRIMARY KEY ( sequence_id );
 
 CREATE TABLE experiment (
     experiment_id                             INTEGER NOT NULL,
-    name                                      VARCHAR2(70),
-    sra_url                                   VARCHAR2(300),
+    name                                      VARCHAR(70),
+    sra_url                                   VARCHAR(300),
     is_it_paired_end                          CHAR(1),
-    sra_record_url                            VARCHAR2(300),
+    sra_record_url                            VARCHAR(300),
     unique_pos                                INTEGER,
     total_tags                                INTEGER,
     fragment_estimate                         INTEGER,
@@ -95,47 +95,45 @@ CREATE TABLE experiment (
     tags_per_bp                               FLOAT,
     avg_tags_per_pos                          FLOAT,
     avg_tag_length                            FLOAT,
-    "avg_fragment_GC-content"                 FLOAT,
+    avg_fragment_GC                           FLOAT,
     total_peaks                               INTEGER,
     peak_size                                 INTEGER,
     total_tags_in_peaks                       FLOAT,
     expected_tags_per_peak                    FLOAT,
     putative_peaks                            INTEGER,
---  ERROR: Column name length exceeds maximum allowed length(30) 
     p_peaks_filt_by_local_signal              INTEGER,
---  ERROR: Column name length exceeds maximum allowed length(30) 
     p_peaks_filt_too_clonal                   INTEGER,
     peaks_after_filtering                     INTEGER,
     genome_genome_id                          INTEGER NOT NULL,
     cell_lines_cellline_id                    INTEGER NOT NULL,
     antibody_antibody_id                      INTEGER NOT NULL,
-    exp_type                                  VARCHAR2(10)
+    exp_type                                  VARCHAR(10)
 )
-    LOGGING;
+    ;
 
 ALTER TABLE experiment ADD CONSTRAINT experiment_pk PRIMARY KEY ( experiment_id );
 
 CREATE TABLE genome (
     genome_id    INTEGER NOT NULL,
-    short_code   VARCHAR2(10),
-    species      VARCHAR2(70),
-    version      VARCHAR2(70)
+    short_code   VARCHAR(10),
+    species      VARCHAR(70),
+    version      VARCHAR(70)
 )
-    LOGGING;
+    ;
 
 ALTER TABLE genome ADD CONSTRAINT genome_pk PRIMARY KEY ( genome_id );
 
 CREATE TABLE motif_pos (
     motifpos_id                INTEGER NOT NULL,
-    chr                        VARCHAR2(2),
-    "start"                    INTEGER,
+    chr                        VARCHAR(2),
+    start                      INTEGER,
     end                        INTEGER,
-    strand                     VARCHAR2(1),
+    strand                     VARCHAR(1),
     homer_score                FLOAT,
     trivial                    CHAR(1),
     consensus_motif_motif_id   INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 ALTER TABLE motif_pos ADD CONSTRAINT motif_pos_pk PRIMARY KEY ( motifpos_id );
 
@@ -145,12 +143,12 @@ CREATE TABLE paired_shift_view (
     experiment_experiment_id   INTEGER NOT NULL,
     consensus_motif_motif_id   INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 CREATE TABLE peak (
     peak_id                    INTEGER NOT NULL,
-    chr                        VARCHAR2(2),
-    "start"                    INTEGER,
+    chr                        VARCHAR(2),
+    start                      INTEGER,
     end                        INTEGER,
     norm_tag_count             FLOAT,
     focus_ratio                FLOAT,
@@ -160,7 +158,7 @@ CREATE TABLE peak (
     clonal_foldchange          FLOAT,
     experiment_experiment_id   INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 ALTER TABLE peak ADD CONSTRAINT peak_pk PRIMARY KEY ( peak_id );
 
@@ -172,27 +170,27 @@ CREATE TABLE pfm (
     probt                      FLOAT,
     consensus_motif_motif_id   INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 CREATE TABLE reference (
-    chr                VARCHAR2(2),
-    "start"            INTEGER,
+    chr                VARCHAR(2),
+    start              INTEGER,
     end                INTEGER,
-    seq                VARCHAR2(200),
+    seq                VARCHAR(200),
     genome_genome_id   INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 CREATE TABLE summit (
     summit_id               INTEGER NOT NULL,
-    chr                     VARCHAR2(2),
+    chr                     VARCHAR(2),
     position                INTEGER,
     distance                INTEGER,
     hight                   INTEGER,
     motif_pos_motifpos_id   INTEGER NOT NULL,
     peak_peak_id            INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 ALTER TABLE summit ADD CONSTRAINT summit_pk PRIMARY KEY ( summit_id );
 
@@ -203,7 +201,7 @@ CREATE TABLE venn_view (
     motif_pos_motifpos_id      INTEGER NOT NULL,
     consensus_motif_motif_id   INTEGER NOT NULL
 )
-    LOGGING;
+    ;
 
 ALTER TABLE anti2cons
     ADD CONSTRAINT anti2cons_antibody_fk FOREIGN KEY ( antibody_antibody_id )
