@@ -15,5 +15,5 @@ for i in db:
         mfields = j.rstrip().split()
         if len(mfields) == 4:
             counter = counter + 1
-            print("%s\t%s\t%s\t%s\t%s\t%s" % (motifid, counter, mfields[0], mfields[1], mfields[2], mfields[3]))
+            print("%s\t%s\t%s\t%s\t%s\t%s" % (counter, mfields[0], mfields[1], mfields[2], mfields[3], motifid))
     matrixfile.close()

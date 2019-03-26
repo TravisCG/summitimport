@@ -83,7 +83,7 @@ for name in sys.argv[4:]:
 		else:
 			Antibody_antibody_id            = antibody[nf[4]]
 
-		print(count, name, SRA_URL, is_it_paired_end, sra_record_url, unique_pos, total_tags, fragment_estimate, peak_size_estimate, tags_per_BP, avg_tags_per_pos, avg_tag_length, avg_frag_GC, total_peaks, peak_size, total_tags_in_peaks, expected_tags_per_peak, putative_peaks, putative_peaks_filtered_by_local_signal, putative_peaks_filtered_too_clonal, peaks_after_filtering, exp_type, Genome_genome_id, Cell_lines_celline_id, Antibody_antibody_id, sep = "\t")
+		print(count, name, SRA_URL, is_it_paired_end, sra_record_url, unique_pos, total_tags, fragment_estimate, peak_size_estimate, tags_per_BP, avg_tags_per_pos, avg_tag_length, avg_frag_GC, total_peaks, peak_size, total_tags_in_peaks, expected_tags_per_peak, putative_peaks, putative_peaks_filtered_by_local_signal, putative_peaks_filtered_too_clonal, peaks_after_filtering, Genome_genome_id, Cell_lines_celline_id, Antibody_antibody_id, exp_type, sep = "\t")
 
 		count += 1
 	f.close()

@@ -14,7 +14,7 @@ for i in gzip.open(sys.argv[1], "r"):
                 subseq = seq[j:j+200]
                 if subseq == "N"*200:
                     continue
-                print("%s\t%s\t%d\t%d\t%s" % (genomeid, header, j+1, j+len(subseq), subseq))
+                print("%s\t%d\t%d\t%s\t%s" % (header, j+1, j+len(subseq), subseq, genomeid))
         seq = []
         header = line.split()[0][1:]
         if header.startswith('K') or header.startswith('G'): # alternative contigs

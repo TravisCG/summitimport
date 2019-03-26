@@ -11,6 +11,6 @@ for i in sys.argv[1:]:
 		fields = line.rstrip().split()
 		consensus = fields[4].replace('et', '')
 		known_motif_finding = fields[5]
-		print(count, consensus, known_motif_finding, count, sep = "\t")
+		print(count, consensus, count, known_motif_finding, sep = "\t")
 		count += 1
 	f.close()
