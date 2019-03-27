@@ -74,7 +74,7 @@ ALTER TABLE dbsnp ADD CONSTRAINT dbsnp_pk PRIMARY KEY ( dbsnp_id );
 
 CREATE TABLE denovo_motif (
     sequence_id                INTEGER NOT NULL,
-    consensus_equence          VARCHAR(70),
+    consensus_sequence         VARCHAR(300),
     experiment_experiment_id   INTEGER NOT NULL,
     know_motif_finding         VARCHAR(300)
 )
@@ -85,7 +85,7 @@ ALTER TABLE denovo_motif ADD CONSTRAINT denovo_motif_pk PRIMARY KEY ( sequence_i
 CREATE TABLE experiment (
     experiment_id                             INTEGER NOT NULL,
     name                                      VARCHAR(70),
-    sra_url                                   VARCHAR(300),
+    sra_url                                   VARCHAR(1500),
     is_it_paired_end                          CHAR(1),
     sra_record_url                            VARCHAR(300),
     unique_pos                                INTEGER,
@@ -186,7 +186,7 @@ CREATE TABLE summit (
     chr                     VARCHAR(2),
     position                INTEGER,
     distance                INTEGER,
-    hight                   INTEGER,
+    hight                   FLOAT,
     motif_pos_motifpos_id   INTEGER NOT NULL,
     peak_peak_id            INTEGER NOT NULL
 )

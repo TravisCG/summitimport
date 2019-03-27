@@ -7,7 +7,7 @@ do
    count=`expr $count + 1`
    python3 summit2.py $i ../tables_txt/peak.tsv ../tables_txt/experiment.tsv ../tables_txt/tmp1.tsv >../tables_txt/summit.chr${i}.tsv &
 
-   if [ $count = 4 ]
+   if [ $count = 10 ]
    then
       wait
       count=0
